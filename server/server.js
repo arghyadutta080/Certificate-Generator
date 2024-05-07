@@ -5,6 +5,7 @@ import { connectDB } from './lib/db.js';
 import { errorMiddleware } from './middleware/errorMiddleware.js';
 import cookieParser from 'cookie-parser';
 import { userRouter } from './routes/userRoute.js';
+import { certificateRoute } from './routes/certificateRoute.js';
 
 const app = express();
 dotenv.config()
@@ -25,6 +26,7 @@ connectDB();
 
 // routing middlewares
 app.use(userRouter); 
+app.use(certificateRoute);
 
 // error handling middleware
 app.use(errorMiddleware);

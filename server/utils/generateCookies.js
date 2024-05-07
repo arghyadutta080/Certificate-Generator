@@ -7,8 +7,6 @@ const generateCookies = async (user, msg, res) => {
         secure: true,
         SameSite: 'strict'
     }).json({
-        userId: user._id,
-        token,
         success: true,
         message: msg
     })
