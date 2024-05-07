@@ -58,7 +58,8 @@ const profile = asyncErrorHandler(async (req, res, next) => {
         user: {
             userId: req.user._id,
             username: req.user.username,
-            email: req.user.email
+            email: req.user.email,
+            role: req.user.role
         }
     })
 })
