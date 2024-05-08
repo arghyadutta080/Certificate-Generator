@@ -7,6 +7,8 @@ import Navbar from "../components/common/Navbar";
 import { VStack } from "@chakra-ui/react";
 import RequestedCertificates from "../components/home/RequestedCertificates";
 import ApprovedCertificates from "../components/home/ApprovedCertificates";
+import AdminPanel from "../components/home/admin/AdminPanel";
+import EditCertificatePage from "../components/home/admin/EditCertificatePage";
 
 export interface Certificate {
   _id: string;
@@ -28,17 +30,20 @@ export interface requestedCertificate {
   __v: number;
 }
 
-
 const HomePage: React.FC = () => {
-
   const [certificates, setCertificates] = useState<Certificate[]>([]);
-  const [requestedCertificates, setRequestedCertificates] = useState<requestedCertificate[]>([]);
-  const [approvedCertificates, setApprovedCertificates] = useState<requestedCertificate[]>([]);
-  
+  const [requestedCertificates, setRequestedCertificates] = useState<
+    requestedCertificate[]
+  >([]);
+  const [approvedCertificates, setApprovedCertificates] = useState<
+    requestedCertificate[]
+  >([]);
+
   const getAllCertificates = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5001/api/manage-certificate/get-all", {
+        "http://localhost:5001/api/manage-certificate/get-all",
+        {
           withCredentials: true,
         }
       );
@@ -52,23 +57,28 @@ const HomePage: React.FC = () => {
   const getRequestedCertificates = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5001/api/manage-certificate/user/my-certificates", {
+        "http://localhost:5001/api/manage-certificate/user/my-certificates",
+        {
           withCredentials: true,
         }
       );
       console.log(data);
-      const requests: requestedCertificate[] = data.requests.filter((request: requestedCertificate) => {
-        return request.state === "pending";
-      })
+      const requests: requestedCertificate[] = data.requests.filter(
+        (request: requestedCertificate) => {
+          return request.state === "pending";
+        }
+      );
       setRequestedCertificates(requests);
-      const approved: requestedCertificate[] = data.requests.filter((request: requestedCertificate) => {
-        return request.state === "approved";
-      })
+      const approved: requestedCertificate[] = data.requests.filter(
+        (request: requestedCertificate) => {
+          return request.state === "approved";
+        }
+      );
       setApprovedCertificates(approved);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getAllCertificates();
@@ -101,6 +111,8 @@ const HomePage: React.FC = () => {
           path="approved"
           element={<ApprovedCertificates approves={approvedCertificates} />}
         />
+        <Route path="admin" element={<AdminPanel />} />
+        <Route path="admin/:id" element={<EditCertificatePage />} />
       </Routes>
     </VStack>
   );

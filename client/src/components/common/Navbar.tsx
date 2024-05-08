@@ -89,8 +89,7 @@ const getProfilePic = async () => {
 
 useEffect(() => {
   console.log(isAuthenticated); // Always call a state deciding variable inside a child component of a Page
-  if (!isAuthenticated) {
-    // to avoid unnecessary navigations
+  if (!isAuthenticated) {       // to avoid unnecessary navigations
     navigate("/auth");
   }
 }, [isAuthenticated]);
@@ -145,7 +144,7 @@ useEffect(() => {
           </Box>
           {user?.role === "admin" && (
             <Box color={"white"}>
-              <Link to="admin-panel">Admin-Panel</Link>
+              <Link to="admin">Admin-Panel</Link>
             </Box>
           )}
           <Button

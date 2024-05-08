@@ -50,7 +50,8 @@ const requestCertificate = asyncErrorHandler(async (req, res, next) => {
 
     const newRequest = new issueCertificateModel({
         certificate,
-        requested_by: req.user.email
+        requested_by: req.user.email,
+        username: req.user.username
     });
     await newRequest.save();
 
@@ -82,6 +83,24 @@ const getCertificateRequests = asyncErrorHandler(async (req, res, next) => {
 
 
 // accessable by admin only
+const getRequestById = asyncErrorHandler(async (req, res, next) => {
+    if (!req.user) {
+        return next(new ErrorHandler("Profile not found!", 404));
+    }
+
+    if (req.user.role !== 'admin') {
+        return next(new ErrorHandler("You are not authorized to view certificate requests", 403));
+    }
+    const { reqId } = req.params;
+    const request = await issueCertificateModel.findById(reqId).populate('certificate');
+    return res.status(200).json({
+        success: true,
+        request
+    })
+})
+
+
+// accessable by admin only
 const approveRequests = asyncErrorHandler(async (req, res, next) => {
     if (!req.user) {
         return next(new ErrorHandler("Profile not found!", 404));
@@ -99,7 +118,7 @@ const approveRequests = asyncErrorHandler(async (req, res, next) => {
 
     const { requestId } = req.params;
     const request = await issueCertificateModel.findById(requestId).populate('certificate');
-    
+
     if (!request) {
         return next(new ErrorHandler("Request not found", 404));
     }
@@ -131,4 +150,4 @@ const getMyCertificates = asyncErrorHandler(async (req, res, next) => {
 })
 
 
-export { addCertificate, getCertificates, requestCertificate, getCertificateRequests, approveRequests, getMyCertificates }
+export { addCertificate, getCertificates, requestCertificate, getCertificateRequests, approveRequests, getMyCertificates, getRequestById }
