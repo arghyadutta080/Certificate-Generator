@@ -11,10 +11,9 @@ const PendingRequests: React.FC<Props> = ({ requests }) => {
   return (
     <Flex
       minH={"90vh"}
-      w={{ base: "95%", lg: "85%" }}
+      w={{ base: "95%", lg: "95%" }}
       py={5}
       flexWrap={"wrap"}
-    //   alignItems={"center"}
       justifyContent={"center"}
     >
       {requests.map((request: requestedCertificate) => {
@@ -27,13 +26,12 @@ const PendingRequests: React.FC<Props> = ({ requests }) => {
                 fontWeight={"bold"}
                 alignSelf={"center"}
               >
-                {" "}
-                {request.certificate.title}{" "}
+                Requested by: {request.username}
               </Box>
               <img
                 src={request.certificate.image_url}
                 alt={request.certificate.title}
-                style={{ height: "200px" }}
+                style={{ height: "300px" }}
               />
               <Button
                 colorScheme="teal"

@@ -1,4 +1,4 @@
-import { Button, HStack, Image, Input, VStack } from "@chakra-ui/react";
+import { Button, HStack, Image, Input, Text, VStack } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -109,7 +109,8 @@ const EditCertificatePage: React.FC = () => {
     >
       <EditedCertificate />
 
-      <VStack bgColor={"white"} px={5} py={7} spacing={5}>
+      <VStack bgColor={"white"} px={5} py={5} spacing={5} borderRadius={10}>
+        <Text fontSize={30} fontWeight={"bold"} color={"#1D3FFE"}>Certificate Details</Text>
         <Input
           placeholder="Name"
           size="md"
@@ -137,7 +138,7 @@ const EditCertificatePage: React.FC = () => {
           value={information.date}
           onChange={handleInputChange}
         />
-        <Button colorScheme="teal" size="md" onClick={printHandler}>
+        <Button colorScheme="teal" size="md" onClick={printHandler} my={2}>
           Save as PDF
         </Button>
       </VStack>

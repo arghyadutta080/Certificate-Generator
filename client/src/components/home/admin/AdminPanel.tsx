@@ -5,12 +5,15 @@ import {
   TabPanels,
   Tab,
   TabPanel,
+  Box,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { requestedCertificate } from "../../../pages/HomePage";
 import PendingRequests from "./PendingRequests";
 import ApprovedRequests from "./ApprovedRequests";
+import { FaRegClock, FaPlus } from "react-icons/fa6";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
 
 
 const AdminPanel: React.FC = () => {
@@ -65,13 +68,16 @@ const AdminPanel: React.FC = () => {
       >
         <TabList>
           <Tab fontSize={20} color={"white"}>
-            Pending Requests
+            <FaRegClock />
+            <Box ml={2}>Pending Requests</Box>
+          </Tab>
+          <Tab fontSize={20} color={"white"} alignItems={"center"}>
+            <IoCheckmarkDoneSharp size={25}/>
+            <Box ml={1}>Approved Requests</Box>
           </Tab>
           <Tab fontSize={20} color={"white"}>
-            Approved Requests
-          </Tab>
-          <Tab fontSize={20} color={"white"}>
-            Add Certificate
+            <FaPlus />
+            <Box ml={2}>Add Certificate</Box>
           </Tab>
         </TabList>
         <TabPanels>

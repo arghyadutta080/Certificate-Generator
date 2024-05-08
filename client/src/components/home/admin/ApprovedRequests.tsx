@@ -14,7 +14,6 @@ const ApprovedRequests: React.FC<Props> = ({approvals}) => {
       w={{ base: "95%", lg: "85%" }}
       py={5}
       flexWrap={"wrap"}
-    //   alignItems={"center"}
       justifyContent={"center"}
     >
       {approvals.map((approval: requestedCertificate) => {
@@ -26,13 +25,12 @@ const ApprovedRequests: React.FC<Props> = ({approvals}) => {
               fontWeight={"bold"}
               alignSelf={"center"}
             >
-              {" "}
-              {approval.certificate.title}{" "}
+              Approved to: {approval.username}
             </Box>
             <img
               src={approval.certificate.image_url}
               alt={approval.certificate.title}
-              style={{ height: "200px" }}
+              style={{ height: "300px" }}
             />
             <Button colorScheme="teal" size="md" px={5} py={3} disabled={true}>
               View Certificate

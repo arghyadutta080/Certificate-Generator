@@ -23,6 +23,7 @@ export interface requestedCertificate {
   _id: string;
   certificate: Certificate;
   requested_by: string;
+  username: string;
   state: string;
   google_drive_url: string;
   createdAt: string;
