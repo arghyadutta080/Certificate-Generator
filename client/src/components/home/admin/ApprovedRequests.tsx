@@ -1,6 +1,7 @@
 import React from 'react'
 import { requestedCertificate } from '../../../pages/HomePage'
 import { Flex, VStack, Box, Button } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 
 
 interface Props {
@@ -32,9 +33,11 @@ const ApprovedRequests: React.FC<Props> = ({approvals}) => {
               alt={approval.certificate.title}
               style={{ height: "300px" }}
             />
+            <Link to={approval.google_drive_url}>
             <Button colorScheme="teal" size="md" px={5} py={3} disabled={true}>
               View Certificate
             </Button>
+            </Link>
           </VStack>
         );
       })}

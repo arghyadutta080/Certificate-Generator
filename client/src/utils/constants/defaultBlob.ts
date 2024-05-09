@@ -1,0 +1,1 @@
+export const defaultBlob = new Blob(["Default Content"], { type: "text/plain" });

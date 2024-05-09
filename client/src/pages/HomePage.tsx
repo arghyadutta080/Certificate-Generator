@@ -8,7 +8,7 @@ import { VStack } from "@chakra-ui/react";
 import RequestedCertificates from "../components/home/RequestedCertificates";
 import ApprovedCertificates from "../components/home/ApprovedCertificates";
 import AdminPanel from "../components/home/admin/AdminPanel";
-import EditCertificatePage from "../components/home/admin/EditCertificatePage";
+import EditCertificatePage from "../components/home/admin/pendingRequest/EditCertificatePage";
 
 export interface Certificate {
   _id: string;

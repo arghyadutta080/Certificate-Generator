@@ -10,11 +10,11 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { requestedCertificate } from "../../../pages/HomePage";
-import PendingRequests from "./PendingRequests";
+import PendingRequests from "./pendingRequest/PendingRequests";
 import ApprovedRequests from "./ApprovedRequests";
 import { FaRegClock, FaPlus } from "react-icons/fa6";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
-
+import AddRequests from "./AddRequests";
 
 const AdminPanel: React.FC = () => {
   const [pendingRequests, setPendingRequests] = useState<
@@ -72,7 +72,7 @@ const AdminPanel: React.FC = () => {
             <Box ml={2}>Pending Requests</Box>
           </Tab>
           <Tab fontSize={20} color={"white"} alignItems={"center"}>
-            <IoCheckmarkDoneSharp size={25}/>
+            <IoCheckmarkDoneSharp size={25} />
             <Box ml={1}>Approved Requests</Box>
           </Tab>
           <Tab fontSize={20} color={"white"}>
@@ -88,7 +88,7 @@ const AdminPanel: React.FC = () => {
             <ApprovedRequests approvals={approvedRequests} />
           </TabPanel>
           <TabPanel>
-            <p>three!</p>
+            <AddRequests />
           </TabPanel>
         </TabPanels>
       </Tabs>

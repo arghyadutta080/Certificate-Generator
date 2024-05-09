@@ -1,5 +1,5 @@
 import React from "react";
-import { requestedCertificate } from "../../../pages/HomePage";
+import { requestedCertificate } from "../../../../pages/HomePage";
 import { Flex, VStack, Box, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
