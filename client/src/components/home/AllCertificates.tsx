@@ -2,6 +2,7 @@ import { Box, Button, Flex, Text, VStack, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
 import { Certificate } from "../../pages/HomePage";
+import { IoIosSend } from "react-icons/io";
 
 interface Props {
   certificates: Certificate[];
@@ -14,7 +15,7 @@ const AllCertificates: React.FC<Props> = ({ certificates }) => {
     console.log(certificateId);
     axios
       .get(
-        `http://localhost:5001/api/manage-certificate/user/request/${certificateId}`,
+        `${import.meta.env.VITE_SERVER_API}/api/manage-certificate/user/request/${certificateId}`,
         {
           withCredentials: true,
         }
@@ -57,7 +58,7 @@ const AllCertificates: React.FC<Props> = ({ certificates }) => {
         </Text>
       ) : certificates?.length === 0 ? (
         <Text color={"white"} fontSize={100} textAlign={"center"}>
-          No Certificate available to request!
+          No Certificate is available to request!
         </Text>
       ) : (
         certificates.map((certificate: Certificate) => {
@@ -79,8 +80,10 @@ const AllCertificates: React.FC<Props> = ({ certificates }) => {
                 px={5}
                 py={3}
                 onClick={() => requestCertificate(certificate._id)}
+                alignItems={"center"}
               >
-                Request
+                <IoIosSend size={25}/>
+                <Text ml={2}>Request</Text>
               </Button>
             </VStack>
           );

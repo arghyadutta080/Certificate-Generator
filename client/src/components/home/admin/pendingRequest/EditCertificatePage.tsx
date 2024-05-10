@@ -20,7 +20,6 @@ import { makeToast } from "../../../../utils/makeToast";
 import FormInputComponent from "./FormInputComponent";
 import { defaultBlob } from "../../../../utils/constants/defaultBlob";
 
-
 const EditCertificatePage: React.FC = () => {
   const { id } = useParams();
 
@@ -56,7 +55,9 @@ const EditCertificatePage: React.FC = () => {
   };
 
   const toast = useToast();
-  const [file, setFile] = useState<Blob | Uint8Array | ArrayBuffer | any>(defaultBlob);
+  const [file, setFile] = useState<Blob | Uint8Array | ArrayBuffer | any>(
+    defaultBlob
+  );
   const [Uploading, setUploading] = useState<boolean>(false);
 
   const getPDFfile = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +74,9 @@ const EditCertificatePage: React.FC = () => {
       const file_id: string | any = id?.toString();
       const file_url = await createDocURL(file_id, file);
       const { data } = await axios.put(
-        `http://localhost:5001/api/manage-certificate/admin/approve-request/${id}`,
+        `${
+          import.meta.env.VITE_SERVER_API
+        }/api/manage-certificate/admin/approve-request/${id}`,
         {
           google_drive_url: file_url,
           state: "approved",
@@ -105,7 +108,7 @@ const EditCertificatePage: React.FC = () => {
   const getRequestDetails = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5001/api/manage-certificate/admin/get-requests/${id}`,
+        `${import.meta.env.VITE_SERVER_API}/api/manage-certificate/admin/get-requests/${id}`,
         {
           withCredentials: true,
         }
@@ -153,7 +156,7 @@ const EditCertificatePage: React.FC = () => {
 
   return (
     <HStack
-      minH={"90vh"}
+      minH={"70vh"}
       w={{ base: "95%", lg: "90%" }}
       py={5}
       mt={{ base: 10, lg: 20 }}
@@ -165,12 +168,23 @@ const EditCertificatePage: React.FC = () => {
         <Text fontSize={30} fontWeight={"bold"} color={"#1D3FFE"}>
           Certificate Details
         </Text>
-        <FormInputComponent place="Name" name="name" value={information.name} onChange={handleInputChange}
+        <FormInputComponent
+          place="Name"
+          name="name"
+          value={information.name}
+          onChange={handleInputChange}
         />
-        <FormInputComponent place="Course name" name="course" value={information.course} onChange={handleInputChange}
+        <FormInputComponent
+          place="Course name"
+          name="course"
+          value={information.course}
+          onChange={handleInputChange}
         />
-        <FormInputComponent place="Issue Date" name="date" value={information.date} onChange={handleInputChange}
-
+        <FormInputComponent
+          place="Issue Date"
+          name="date"
+          value={information.date}
+          onChange={handleInputChange}
         />
         <VStack w={"full"}>
           <Button
@@ -208,11 +222,20 @@ const EditCertificatePage: React.FC = () => {
                 }}
               >
                 {Uploading ? (
-                  <CircularProgress isIndeterminate color="blue.600" size={7} />
+                  <>
+                    <CircularProgress
+                      isIndeterminate
+                      color="blue.600"
+                      size={6}
+                    />
+                    <Box ml={2}>Uploading...</Box>
+                  </>
                 ) : (
-                  <IoCloudUploadSharp size={20} />
+                  <>
+                    <IoCloudUploadSharp size={20} />
+                    <Box ml={2}>Upload</Box>
+                  </>
                 )}
-                <Box ml={2}>Upload</Box>
               </label>
             </HStack>
           </VStack>

@@ -2,6 +2,8 @@ import React from "react";
 import { Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
 import { requestedCertificate } from "../../pages/HomePage";
 import { Link } from "react-router-dom";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
+import { FaEye } from "react-icons/fa";
 
 interface Props {
   approves: requestedCertificate[];
@@ -24,7 +26,7 @@ const ApprovedCertificates: React.FC<Props> = ({ approves }) => {
         </Text>
       ) : approves?.length === 0 ? (
         <Text color={"white"} fontSize={100} textAlign={"center"}>
-          No Approved Certificate available!
+          No Approved Certificate is available!
         </Text>
       ) : (
         approves.map((approve: requestedCertificate) => {
@@ -59,17 +61,23 @@ const ApprovedCertificates: React.FC<Props> = ({ approves }) => {
                   py={3}
                   disabled={true}
                 >
-                  Approved
+                  <IoCheckmarkDoneSharp size={20} />
+                  <Text ml={2}>Approved</Text>
                 </Button>
-                <Button
-                  colorScheme="teal"
-                  size="md"
-                  px={5}
-                  py={3}
-                  disabled={true}
-                >
-                  <Link to={approve.google_drive_url}>View Certificate</Link>
-                </Button>
+                <Link to={approve.google_drive_url}>
+                  <Button
+                    colorScheme="teal"
+                    size="md"
+                    px={5}
+                    py={3}
+                    disabled={true}
+                    flex={"row"}
+                    alignItems={"center"}
+                  >
+                    <FaEye size={25}/>
+                    <Text ml={2}>View Certificate</Text>
+                  </Button>
+                </Link>
               </HStack>
             </VStack>
           );

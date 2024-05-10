@@ -10,7 +10,7 @@ interface Props {
 const PendingRequests: React.FC<Props> = ({ requests }) => {
   return (
     <Flex
-      minH={"90vh"}
+      minH={"70vh"}
       w={{ base: "95%", lg: "95%" }}
       py={5}
       flexWrap={"wrap"}
@@ -23,7 +23,7 @@ const PendingRequests: React.FC<Props> = ({ requests }) => {
         </Text>
       ) : requests?.length === 0 ? (
         <Text color={"white"} fontSize={100} textAlign={"center"}>
-          No pending requests for Certificate!
+          No pending request for Certificate!
         </Text>
       ) : (
         requests.map((request: requestedCertificate) => {

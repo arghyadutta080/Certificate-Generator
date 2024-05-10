@@ -34,7 +34,6 @@ const EditComponent: React.FC<Props> = ({ CertificateLayout }) => {
           position: "absolute",
           left: CertificateLayout.stageLeft,
           top: CertificateLayout.stageTop,
-        //   border: "2px solid red"
         }}
       >
         <Layer>

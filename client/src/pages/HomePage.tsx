@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-
 import axios from "axios";
 import AllCertificates from "../components/home/AllCertificates";
 import Navbar from "../components/common/Navbar";
@@ -43,7 +42,7 @@ const HomePage: React.FC = () => {
   const getAllCertificates = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5001/api/manage-certificate/get-all",
+        `${import.meta.env.VITE_SERVER_API}/api/manage-certificate/get-all`,
         {
           withCredentials: true,
         }
@@ -58,7 +57,7 @@ const HomePage: React.FC = () => {
   const getRequestedCertificates = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5001/api/manage-certificate/user/my-certificates",
+        `${import.meta.env.VITE_SERVER_API}/api/manage-certificate/user/my-certificates`,
         {
           withCredentials: true,
         }

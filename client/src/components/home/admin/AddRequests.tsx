@@ -31,7 +31,7 @@ const AddRequests: React.FC = () => {
     try {
       const file_url = await createDocURL(fileName, file);
       const { data } = await axios.post(
-        `http://localhost:5001/api/manage-certificate/admin/add-new`,
+        `${import.meta.env.VITE_SERVER_API}/api/manage-certificate/admin/add-new`,
         {
           title: fileName,
           image_url: file_url,
@@ -81,7 +81,7 @@ const AddRequests: React.FC = () => {
         style={{
           display: "flex",
           height: "50vh",
-          width: "100%",
+          width: "85%",
           cursor: "pointer",
           flexDirection: "column",
           alignItems: "center",

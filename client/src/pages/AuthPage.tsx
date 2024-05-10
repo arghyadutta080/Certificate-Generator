@@ -55,16 +55,16 @@ const AuthPage: React.FC = () => {
           align={{ base: "center", lg: "start" }}
           my={{ base: 5, lg: 0 }}
         >
+          <Box fontSize={{ base: 20, md: 30, lg: 40 }}>
+            Welcome to
+          </Box>
           <Box
             fontSize={{ base: 40, md: 50, lg: 70 }}
             display={"flex"}
             flexDirection={"row"}
             alignItems={"center"}
           >
-            <Box>Saarthi</Box>
-          </Box>
-          <Box fontSize={{ base: 20, md: 30, lg: 40 }}>
-            An OpenAI powered ChatBot
+            <Box>Certificate Generator</Box>
           </Box>
         </Flex>
         <Stack

@@ -3,15 +3,15 @@ import { requestedCertificate } from '../../../pages/HomePage'
 import { Flex, VStack, Box, Button, Text } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 
-
 interface Props {
     approvals: requestedCertificate[];
 }
 
+
 const ApprovedRequests: React.FC<Props> = ({approvals}) => {
   return (
     <Flex
-      minH={"90vh"}
+      minH={"70vh"}
       w={{ base: "95%", lg: "85%" }}
       py={5}
       flexWrap={"wrap"}
@@ -24,7 +24,7 @@ const ApprovedRequests: React.FC<Props> = ({approvals}) => {
         </Text>
       ) : approvals?.length === 0 ? (
         <Text color={"white"} fontSize={100} textAlign={"center"}>
-          No Certificates are approved yet!
+          No Certificate is approved yet!
         </Text>
       ) : (
         approvals.map((approval: requestedCertificate) => {

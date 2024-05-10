@@ -35,7 +35,9 @@ const { isOpen, onOpen, onClose } = useDisclosure();
 
 const logout = () => {
   axios
-    .get("http://localhost:5001/api/auth/logout", { withCredentials: true })
+    .get(`${import.meta.env.VITE_SERVER_API}/api/auth/logout`, {
+      withCredentials: true,
+    })
     .then(async (response) => {
       await checkAuthState();
       setIsAuthenticated(false);

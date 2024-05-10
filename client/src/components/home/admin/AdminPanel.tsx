@@ -32,7 +32,7 @@ const AdminPanel: React.FC = () => {
   const getIssuCertificateList = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5001/api/manage-certificate/admin/get-requests",
+        `${import.meta.env.VITE_SERVER_API}/api/manage-certificate/admin/get-requests`,
         {
           withCredentials: true,
         }

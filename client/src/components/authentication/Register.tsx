@@ -29,7 +29,7 @@ const Register: React.FC = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:5000/auth/register",
+        `${import.meta.env.VITE_SERVER_API}/auth/register`,
         { username, email, password, confirmPassword },
         { withCredentials: true }
       )

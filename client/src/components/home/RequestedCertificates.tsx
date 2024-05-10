@@ -7,6 +7,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { requestedCertificate } from "../../pages/HomePage";
+import { FaRegClock } from "react-icons/fa6";
 
 interface Props {
   requests: requestedCertificate[];
@@ -29,7 +30,7 @@ const RequestedCertificates: React.FC<Props> = ({ requests }) => {
         </Text>
       ) : requests?.length === 0 ? (
         <Text color={"white"} fontSize={100} textAlign={"center"}>
-          No Requested Certificate available!
+          No Certificate is requested yet!
         </Text>
       ) : (
         requests.map((request: requestedCertificate) => {
@@ -54,8 +55,10 @@ const RequestedCertificates: React.FC<Props> = ({ requests }) => {
                 px={5}
                 py={3}
                 disabled={true}
+                alignItems={"center"}
               >
-                Approval Pending
+                <FaRegClock size={20}/>
+                <Text ml={2}>Request Pending</Text>
               </Button>
             </VStack>
           );
