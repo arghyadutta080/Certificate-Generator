@@ -14,10 +14,12 @@ const ApprovedCertificates: React.FC<Props> = ({ approves }) => {
       w={{ base: "95%", lg: "85%" }}
       py={5}
       mt={{ base: 10, lg: 20 }}
+      flexWrap={"wrap"}
+      justifyContent={"center"}
     >
       {approves.map((approve: requestedCertificate) => {
         return (
-          <VStack key={approve.certificate._id} h={"90vh"} mx={10}>
+          <VStack key={approve.certificate._id} h={"auto"} mx={10} my={5}>
             <Box
               color={"white"}
               fontSize={25}

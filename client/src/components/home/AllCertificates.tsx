@@ -46,13 +46,14 @@ const AllCertificates: React.FC<Props> = ({certificates}) => {
     <Flex
       minH={"90vh"}
       w={{ base: "95%", lg: "85%" }}
-      // spacing={3}
       py={5}
       mt={{ base: 10, lg: 20 }}
+      flexWrap={"wrap"}
+      justifyContent={"center"}
     >
       {certificates.map((certificate: Certificate) => {
         return (
-          <VStack key={certificate._id} h={"60vh"} mx={10}>
+          <VStack key={certificate._id} width={"30%"} mx={10} my={5}>
             <Box
               color={"white"}
               fontSize={25}

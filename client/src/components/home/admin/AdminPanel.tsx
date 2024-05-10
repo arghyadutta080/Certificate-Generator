@@ -56,7 +56,7 @@ const AdminPanel: React.FC = () => {
   return (
     <Flex
       minH={"90vh"}
-      w={{ base: "95%", lg: "85%" }}
+      w={{ base: "95%", lg: "95%" }}
       py={5}
       mt={{ base: 10, lg: 20 }}
     >
