@@ -144,8 +144,8 @@ const EditCertificatePage: React.FC = () => {
 
   const EditedCertificate = () => {
     return (
-      <div ref={targetRef}>
-        <VStack position={"relative"}>
+      <div style={{ border: "2px solid red" }} ref={targetRef}>
+        <VStack position={"relative"} border={2} borderColor={"red.500"}>
           <Image src={image} height={815} objectFit="contain" />
           <EditComponent CertificateLayout={certificateDescLayout} />
           <EditComponent CertificateLayout={certificateNameLayout} />
@@ -161,6 +161,7 @@ const EditCertificatePage: React.FC = () => {
       py={5}
       mt={{ base: 10, lg: 20 }}
       justifyContent="space-between"
+      zIndex={10}
     >
       <EditedCertificate />
 
