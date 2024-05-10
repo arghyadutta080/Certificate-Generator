@@ -29,11 +29,18 @@ const ApprovedCertificates: React.FC<Props> = ({ approves }) => {
               {" "}
               {approve.certificate.title}{" "}
             </Box>
-            <img
-              src={approve.certificate.image_url}
-              alt={approve.certificate.title}
-              style={{ maxHeight: "40vh" }}
-            />
+            {approve.google_drive_url !== "" ? (
+              <iframe
+                src={approve.google_drive_url}
+                style={{ width: "auto", height: "233px" }}
+              ></iframe>
+            ) : (
+              <img
+                src={approve.certificate.image_url}
+                alt={approve.certificate.title}
+                style={{ height: "300px" }}
+              />
+            )}
             <HStack>
               <Button
                 colorScheme="teal"

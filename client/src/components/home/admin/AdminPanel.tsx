@@ -8,13 +8,15 @@ import {
   Box,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { requestedCertificate } from "../../../pages/HomePage";
 import PendingRequests from "./pendingRequest/PendingRequests";
 import ApprovedRequests from "./ApprovedRequests";
 import { FaRegClock, FaPlus } from "react-icons/fa6";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import AddRequests from "./AddRequests";
+import { AuthContext } from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const AdminPanel: React.FC = () => {
   const [pendingRequests, setPendingRequests] = useState<
@@ -23,6 +25,9 @@ const AdminPanel: React.FC = () => {
   const [approvedRequests, setApprovedRequests] = useState<
     requestedCertificate[]
   >([]);
+
+  const context = useContext(AuthContext);
+  const { user } = context;
 
   const getIssuCertificateList = async () => {
     try {
@@ -49,6 +54,12 @@ const AdminPanel: React.FC = () => {
     }
   };
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    user?.role !== "admin" && navigate("/");
+  }, [])
+
   useEffect(() => {
     getIssuCertificateList();
   }, []);
@@ -59,6 +70,7 @@ const AdminPanel: React.FC = () => {
       w={{ base: "95%", lg: "95%" }}
       py={5}
       mt={{ base: 10, lg: 20 }}
+      zIndex={0}
     >
       <Tabs
         variant="soft-rounded"

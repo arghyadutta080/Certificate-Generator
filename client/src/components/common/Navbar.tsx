@@ -107,6 +107,7 @@ useEffect(() => {
       overflow={"hidden"}
       position={"fixed"}
       top={0}
+      zIndex={10}
       w={"full"}
       justifyContent={"center"}
       background={

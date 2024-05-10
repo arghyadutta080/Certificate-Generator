@@ -1,11 +1,17 @@
 import mongoose from "mongoose"
-import asyncErrorHandler from "../middleware/asyncErrorHandler.js"
 
-const connectDB = asyncErrorHandler(async () => {
-    await mongoose.connect(process.env.MONGO_URI, {
-        dbName: 'certificate-management'
-    })
-    console.log("DB connected")
-})
+const connectDB = async () => {
+    try { 
+        await mongoose.connect(process.env.MONGO_URI, {
+            dbName: 'certificate-management'
+        })
+        console.log("DB connected")
+    } catch (error) { 
+        console.log(error);
+        setTimeout(() => {
+            connectDB();
+        }, 3000);
+    }
+}
 
 export { connectDB }

@@ -8,8 +8,8 @@ const certificateSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-}, 
-    { timestamps: true }
+},
+    { timestamps: true } 
 );
 
 const certificateModel = mongoose.model('certificates', certificateSchema);

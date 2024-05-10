@@ -19,7 +19,7 @@ const ApprovedRequests: React.FC<Props> = ({approvals}) => {
     >
       {approvals.map((approval: requestedCertificate) => {
         return (
-          <VStack key={approval.certificate._id} mx={10} my={5}>
+          <VStack key={approval._id} mx={10} my={5}>
             <Box
               color={"white"}
               fontSize={25}
@@ -28,15 +28,28 @@ const ApprovedRequests: React.FC<Props> = ({approvals}) => {
             >
               Approved to: {approval.username}
             </Box>
-            <img
-              src={approval.certificate.image_url}
-              alt={approval.certificate.title}
-              style={{ height: "300px" }}
-            />
+            {approval.google_drive_url !== "" ? (
+              <iframe
+                src={approval.google_drive_url}
+                style={{ width: "auto", height: "233px" }}
+              ></iframe>
+            ) : (
+              <img
+                src={approval.certificate.image_url}
+                alt={approval.certificate.title}
+                style={{ height: "300px" }}
+              />
+            )}
             <Link to={approval.google_drive_url}>
-            <Button colorScheme="teal" size="md" px={5} py={3} disabled={true}>
-              View Certificate
-            </Button>
+              <Button
+                colorScheme="teal"
+                size="md"
+                px={5}
+                py={3}
+                disabled={true}
+              >
+                View Certificate
+              </Button>
             </Link>
           </VStack>
         );
