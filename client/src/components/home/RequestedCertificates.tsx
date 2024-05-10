@@ -1,5 +1,11 @@
 import React from "react";
-import { Box, Button, Flex, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { requestedCertificate } from "../../pages/HomePage";
 
 interface Props {
@@ -15,29 +21,46 @@ const RequestedCertificates: React.FC<Props> = ({ requests }) => {
       mt={{ base: 10, lg: 20 }}
       flexWrap={"wrap"}
       justifyContent={"center"}
+      alignItems={!requests || requests?.length === 0 ? "center" : ""}
     >
-      {requests.map((request: requestedCertificate) => {
-        return (
-          <VStack key={request.certificate._id} w={"30%"} mx={10} my={5}>
-            <Box
-              color={"white"}
-              fontSize={25}
-              fontWeight={"bold"}
-              alignSelf={"center"}
-            >
-              {" "}
-              {request.certificate.title}{" "}
-            </Box>
-            <img
-              src={request.certificate.image_url}
-              alt={request.certificate.title}
-            />
-            <Button colorScheme="teal" size="md" px={5} py={3} disabled={true}>
-              Approval Pending
-            </Button>
-          </VStack>
-        );
-      })}
+      {!requests ? (
+        <Text color={"white"} fontSize={100}>
+          Loading...
+        </Text>
+      ) : requests?.length === 0 ? (
+        <Text color={"white"} fontSize={100} textAlign={"center"}>
+          No Requested Certificate available!
+        </Text>
+      ) : (
+        requests.map((request: requestedCertificate) => {
+          return (
+            <VStack key={request.certificate._id} w={"30%"} mx={10} my={5}>
+              <Box
+                color={"white"}
+                fontSize={25}
+                fontWeight={"bold"}
+                alignSelf={"center"}
+              >
+                {" "}
+                {request.certificate.title}{" "}
+              </Box>
+              <img
+                src={request.certificate.image_url}
+                alt={request.certificate.title}
+              />
+              <Button
+                colorScheme="teal"
+                size="md"
+                px={5}
+                py={3}
+                disabled={true}
+              >
+                Approval Pending
+              </Button>
+            </VStack>
+          );
+        })
+      )}
     </Flex>
   );
 };

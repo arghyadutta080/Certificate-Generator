@@ -165,9 +165,13 @@ const EditCertificatePage: React.FC = () => {
         <Text fontSize={30} fontWeight={"bold"} color={"#1D3FFE"}>
           Certificate Details
         </Text>
-        <FormInputComponent place="Name" name="name" value={information.name} onChange={handleInputChange} />
-        <FormInputComponent place="Course name" name="course" value={information.course} onChange={handleInputChange} />
-        <FormInputComponent place="Issue Date" name="date" value={information.date} onChange={handleInputChange} />
+        <FormInputComponent place="Name" name="name" value={information.name} onChange={handleInputChange}
+        />
+        <FormInputComponent place="Course name" name="course" value={information.course} onChange={handleInputChange}
+        />
+        <FormInputComponent place="Issue Date" name="date" value={information.date} onChange={handleInputChange}
+
+        />
         <VStack w={"full"}>
           <Button
             colorScheme="teal"
@@ -204,7 +208,7 @@ const EditCertificatePage: React.FC = () => {
                 }}
               >
                 {Uploading ? (
-                  <CircularProgress isIndeterminate color="blue.600" size={7}/>
+                  <CircularProgress isIndeterminate color="blue.600" size={7} />
                 ) : (
                   <IoCloudUploadSharp size={20} />
                 )}

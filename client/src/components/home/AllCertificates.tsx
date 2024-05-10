@@ -1,22 +1,22 @@
-import { Box, Button, Flex, VStack, useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, VStack, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
 import { Certificate } from "../../pages/HomePage";
 
-
 interface Props {
-    certificates: Certificate[];
-    }
+  certificates: Certificate[];
+}
 
-const AllCertificates: React.FC<Props> = ({certificates}) => {
+const AllCertificates: React.FC<Props> = ({ certificates }) => {
   const toast = useToast();
 
   const requestCertificate = async (certificateId: string) => {
     console.log(certificateId);
     axios
       .get(
-        `http://localhost:5001/api/manage-certificate/user/request/${certificateId}`, {
-            withCredentials: true,
+        `http://localhost:5001/api/manage-certificate/user/request/${certificateId}`,
+        {
+          withCredentials: true,
         }
       )
       .then(async (response) => {
@@ -39,8 +39,7 @@ const AllCertificates: React.FC<Props> = ({certificates}) => {
           isClosable: true,
         });
       });
-  }
-
+  };
 
   return (
     <Flex
@@ -50,26 +49,43 @@ const AllCertificates: React.FC<Props> = ({certificates}) => {
       mt={{ base: 10, lg: 20 }}
       flexWrap={"wrap"}
       justifyContent={"center"}
+      alignItems={!certificates || certificates?.length === 0 ? "center" : ""}
     >
-      {certificates.map((certificate: Certificate) => {
-        return (
-          <VStack key={certificate._id} width={"30%"} mx={10} my={5}>
-            <Box
-              color={"white"}
-              fontSize={25}
-              fontWeight={"bold"}
-              alignSelf={"center"}
-            >
-              {" "}
-              {certificate.title}{" "}
-            </Box>
-            <img src={certificate.image_url} alt={certificate.title} />
-            <Button colorScheme="teal" size="lg" px={5} py={3} onClick={() => requestCertificate(certificate._id)}>
-              Request
-            </Button>
-          </VStack>
-        );
-      })}
+      {!certificates ? (
+        <Text color={"white"} fontSize={100}>
+          Loading...
+        </Text>
+      ) : certificates?.length === 0 ? (
+        <Text color={"white"} fontSize={100} textAlign={"center"}>
+          No Certificate available to request!
+        </Text>
+      ) : (
+        certificates.map((certificate: Certificate) => {
+          return (
+            <VStack key={certificate._id} width={"30%"} mx={10} my={5}>
+              <Box
+                color={"white"}
+                fontSize={25}
+                fontWeight={"bold"}
+                alignSelf={"center"}
+              >
+                {" "}
+                {certificate.title}{" "}
+              </Box>
+              <img src={certificate.image_url} alt={certificate.title} />
+              <Button
+                colorScheme="teal"
+                size="lg"
+                px={5}
+                py={3}
+                onClick={() => requestCertificate(certificate._id)}
+              >
+                Request
+              </Button>
+            </VStack>
+          );
+        })
+      )}
     </Flex>
   );
 };
