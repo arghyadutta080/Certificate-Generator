@@ -30,6 +30,7 @@ const AddRequests: React.FC = () => {
   const addNewCertificate = async () => {
     try {
       const file_url = await getCertificateUploadURL(file);   // getting the url of the uploaded template in cloudinary
+      console.log(file_url);
       const { data } = await axios.post(
         `${import.meta.env.VITE_SERVER_API}/api/manage-certificate/admin/add-new`,
         {

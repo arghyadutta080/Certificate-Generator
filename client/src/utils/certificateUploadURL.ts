@@ -8,7 +8,7 @@ export const getCertificateUploadURL = async (file: File) => {
         data.append("cloud_name", import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
 
         const response = await axios.post(
-            import.meta.env.VITE_CLOUDINARY_URL,
+            `${import.meta.env.VITE_CLOUDINARY_API}`,
             data
         );
 
