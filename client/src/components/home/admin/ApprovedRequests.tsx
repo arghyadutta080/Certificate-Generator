@@ -29,7 +29,7 @@ const ApprovedRequests: React.FC<Props> = ({approvals}) => {
       ) : (
         approvals.map((approval: requestedCertificate) => {
           return (
-            <VStack key={approval._id} mx={10} my={5}>
+            <VStack key={approval._id} h={"auto"} mx={10} my={5}>
               <Box
                 color={"white"}
                 fontSize={25}
