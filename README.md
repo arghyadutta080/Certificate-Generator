@@ -20,19 +20,10 @@ Certificate-Generator is a web application to generate certificates. It provides
 <a href="" target="_blank" rel="noreferrer"> <img src="https://skillicons.dev/icons?i=firebase" alt="react" width="37" height="37"/> </a>
 
 
-## Chatbot working demo video
+## Web-App working demo video
 
 Uploading Certificate Generator - Made with Clipchamp.mp4…
 
-
-
-
-
-## Workflow of Saarthi Chatbot
-
-<p align='center'>
-<img src="./UI/chatbot_workflow.png" alt="Login_page_Desktop" width="800">
-<p>
 
 ## UI of the Web-App
 
