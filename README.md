@@ -22,7 +22,7 @@ Certificate-Generator is a web application to generate certificates. It provides
 
 ## Web-App working demo video
 
-Uploading Certificate Generator - Made with Clipchamp.mp4…
+https://github.com/arghyadutta080/Certificate-Generator/assets/102239340/b9df9085-277a-4493-b932-de4aa965e5e0
 
 
 ## UI of the Web-App
@@ -46,7 +46,7 @@ To run this project locally, follow these steps:
 
     ```bash
     git clone https://github.com/arghyadutta080/Certificate-Generator.git
-    cd Chatbot
+    cd certificate-generator
     ```
 2. **Open the `Certifcate-Generator` directory in your Code-Editor (In my case it's VS-Code)**
 
