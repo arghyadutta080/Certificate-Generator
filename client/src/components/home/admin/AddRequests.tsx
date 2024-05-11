@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { FileInput, Label } from "flowbite-react";
 import { defaultBlob } from "../../../utils/constants/defaultBlob";
 import axios from "axios";
-import { createDocURL } from "../../../utils/firebase/createUploadLink";
 import { FormControl, FormHelperText, Input, useToast } from "@chakra-ui/react";
 import { makeToast } from "../../../utils/makeToast";
+import { getCertificateUploadURL } from "../../../utils/certificateUploadURL";
 
 const AddRequests: React.FC = () => {
-  const [file, setFile] = useState<Blob | Uint8Array | ArrayBuffer | any>(
+  const [file, setFile] = useState<Blob | File | any>(
     defaultBlob
   );
   const [fileName, setFileName] = useState<string>("");
@@ -29,7 +29,7 @@ const AddRequests: React.FC = () => {
 
   const addNewCertificate = async () => {
     try {
-      const file_url = await createDocURL(fileName, file);
+      const file_url = await getCertificateUploadURL(file);   // getting the url of the uploaded template in cloudinary
       const { data } = await axios.post(
         `${import.meta.env.VITE_SERVER_API}/api/manage-certificate/admin/add-new`,
         {

@@ -20,6 +20,7 @@ import { makeToast } from "../../../../utils/makeToast";
 import FormInputComponent from "./FormInputComponent";
 import { defaultBlob } from "../../../../utils/constants/defaultBlob";
 
+
 const EditCertificatePage: React.FC = () => {
   const { id } = useParams();
 
@@ -55,7 +56,7 @@ const EditCertificatePage: React.FC = () => {
   };
 
   const toast = useToast();
-  const [file, setFile] = useState<Blob | Uint8Array | ArrayBuffer | any>(
+  const [file, setFile] = useState<Blob | File | any>(
     defaultBlob
   );
   const [Uploading, setUploading] = useState<boolean>(false);
@@ -72,7 +73,8 @@ const EditCertificatePage: React.FC = () => {
   const approveCertificate = async () => {
     try {
       const file_id: string | any = id?.toString();
-      const file_url = await createDocURL(file_id, file);
+      console.log(file);
+      const file_url = await createDocURL(file_id, file);   // getting the uploaded pdf url from firebase
       const { data } = await axios.put(
         `${
           import.meta.env.VITE_SERVER_API
@@ -88,6 +90,7 @@ const EditCertificatePage: React.FC = () => {
       makeToast(toast, "Certificate Approved", data.message, "success");
       setUploading(false);
     } catch (error) {
+      console.log(error);
       makeToast(toast, "Try Again!", "Certificate approval failed", "error");
       setUploading(false);
     }
@@ -123,6 +126,8 @@ const EditCertificatePage: React.FC = () => {
     }
   };
 
+  console.log(image);
+
   useEffect(() => {
     getRequestDetails();
   }, []);
@@ -138,14 +143,18 @@ const EditCertificatePage: React.FC = () => {
     try {
       toPDF();
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   };
 
   const EditedCertificate = () => {
     return (
-      <div style={{ border: "2px solid red" }} ref={targetRef}>
-        <VStack position={"relative"} border={2} borderColor={"red.500"}>
+      <div>
+        <VStack
+          position={"relative"}
+          ref={targetRef}
+          id="Png"
+        >
           <Image src={image} height={815} objectFit="contain" />
           <EditComponent CertificateLayout={certificateDescLayout} />
           <EditComponent CertificateLayout={certificateNameLayout} />
