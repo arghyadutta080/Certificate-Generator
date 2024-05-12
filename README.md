@@ -28,14 +28,22 @@ https://github.com/arghyadutta080/Certificate-Generator/assets/102239340/b9df908
 ## UI of the Web-App
 
 <p align='center'>
-<!-- <img src="./UI/sample_1.png" alt="Login_page_Desktop" width="400"> -->
-<!-- <img src="./UI/sample_4.png" alt="Chat_page_sidebar_Desktop" width="400"> -->
-<!-- <p> -->
-<!-- <p align='center'> -->
-<!-- <img src="./UI/sample_5.png" alt="Login_page_Mobile" width="200"> -->
-<!-- <img src="./UI/sample_7.png" alt="Chat_page_1_Mobile" width="198"> -->
-<!-- <img src="./UI/sample_6.png" alt="Chat_page_2_Mobile" width="199"> -->
-<!-- <p> -->
+<p align='center'>
+<img src="./UI/sample_1.png" alt="Login_page_Desktop" width="400">
+<img src="./UI/sample_2.png" alt="Chat_page_sidebar_Desktop" width="400">
+<p>
+<p align='center'>
+<img src="./UI/sample_3.png" alt="Login_page_Desktop" width="400">
+<img src="./UI/sample_4.png" alt="Chat_page_sidebar_Desktop" width="400">
+<p>
+<p align='center'>
+<img src="./UI/sample_5.png" alt="Login_page_Desktop" width="400">
+<img src="./UI/sample_6.png" alt="Chat_page_sidebar_Desktop" width="400">
+<p>
+<p align='center'>
+<img src="./UI/sample_7.png" alt="Login_page_Desktop" width="400">
+<img src="./UI/sample_8.png" alt="Chat_page_sidebar_Desktop" width="400">
+<p>
 
 
 ## Getting Started
@@ -48,7 +56,7 @@ To run this project locally, follow these steps:
     git clone https://github.com/arghyadutta080/Certificate-Generator.git
     cd certificate-generator
     ```
-2. **Open the `Certifcate-Generator` directory in your Code-Editor (In my case it's VS-Code)**
+2. **Open the `Certifcate-generator` directory in your Code-Editor (In my case it's VS-Code)**
 
 3. **Open the terminal in your Code-Editor and split it into two terminals**
    
@@ -95,19 +103,19 @@ To run this project locally, follow these steps:
 10. **Create a `.env` file at the root of `client` directory with the following content:**
 
     ```env
-    VITE_API_KEY=your-api-key
-    VITE_AUTH_DOMAIN=your-auth-domain
-    VITE_PROJECT_ID=your-project-id
-    VITE_STORAGE_BUCKET=your-storage-bucket
-    VITE_MESSAGING_SENDER_ID=your-messaging-sender-id
-    VITE_APP_ID=your-app-id
-    VITE_MEASUREMENT_ID=your-measurement-id
+    VITE_API_KEY=<your-api-key>
+    VITE_AUTH_DOMAIN=<your-auth-domain>
+    VITE_PROJECT_ID=y<our-project-id>
+    VITE_STORAGE_BUCKET=<your-storage-bucket>
+    VITE_MESSAGING_SENDER_ID=<your-messaging-sender-id>
+    VITE_APP_ID=<your-app-id>
+    VITE_MEASUREMENT_ID=<your-measurement-id>
 
     VITE_SERVER_API=http://localhost:5001
 
-    VITE_CLOUDINARY_CLOUD_NAME=your-cloud-name
-    VITE_CLOUDINARY_UPLOAD_PRESET=your-upload-preset
-    VITE_CLOUDINARY_API=your-cloudinary-api
+    VITE_CLOUDINARY_CLOUD_NAME=<your-cloud-name>
+    VITE_CLOUDINARY_UPLOAD_PRESET=<your-upload-preset>
+    VITE_CLOUDINARY_API=<your-cloudinary-api>
     ```
 
 11. **Run the `client`:**
