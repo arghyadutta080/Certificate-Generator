@@ -170,7 +170,7 @@ const EditCertificatePage: React.FC = () => {
       py={5}
       mt={{ base: 10, lg: 20 }}
       justifyContent="space-between"
-      zIndex={10}
+      zIndex={1}
     >
       <EditedCertificate />
 
